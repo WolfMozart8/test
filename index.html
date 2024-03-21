@@ -9,7 +9,7 @@
 <body>
     <div id="load-video">
         <input type="file" accept="video/*" id="videoInput">
-        <button class="btn-media">show/hide</button>
+        <button class="btn-media" id="btn-show">show/hide</button>
     </div>
     <div class="video-container">
         <video id="myVideo" controls>
@@ -29,16 +29,16 @@
             <div id="time">
                 <input type="number" id="time-start">
                 <input type="number" id="time-end">
+                <button class="btn-media"  id="btn-repeat">R</button>
             </div>
             <div id="buttons-media">
-                <button class="btn-media">-5</button>
-                <button class="btn-media">-2</button>
-                <button class="btn-media">R</button>
-                <button class="btn-media">P</button>
-                <button class="btn-media">></button>
+                <button class="btn-media"  id="btn-prev5">-5</button>
+                <button class="btn-media"  id="btn-prev2">-2</button>
+                <button class="btn-media"  id="btn-pause">P</button>
+                <button class="btn-media"  id="btn-play">></button>
             </div>
             <div id="create-text">
-                <button class="btn-media">press</button>
+                <button class="btn-media"  id="btn-press">press</button>
             </div>
         </div>
 
