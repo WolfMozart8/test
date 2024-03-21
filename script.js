@@ -1,18 +1,16 @@
 const textarea = document.querySelector("#textarea")
-const n1 = document.querySelector("#n1")
-const n2 = document.querySelector("#n2")
+const timeStart = document.querySelector("#time-start")
+const timeEnd = document.querySelector("#time-end")
 
 const btnAdd = document.querySelector("#btn-add")
 
 const list = JSON.parse(sessionStorage.getItem("list"))
-console.log(sessionStorage.getItem("list"));
-
 
 btnAdd.addEventListener("click", () => {
     addText(
         textarea.value,
-        n1.value,
-        n2.value
+        timeStart.value,
+        timeEnd.value
     )
 })
 
