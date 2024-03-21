@@ -6,6 +6,9 @@ const timeEnd = document.querySelector("#time-end")
 
 const btnAdd = document.querySelector("#btn-add")
 
+// VIDEO
+let video = document.getElementById("myVideo");
+
 const list = []
 if (sessionStorage.getItem("list")) {
     list = JSON.parse(sessionStorage.getItem("list"))
@@ -40,3 +43,7 @@ function domAddText(textObject) {
 
     textList.appendChild(domTextDIv)
 }
+
+/**
+ * VIDEO
+ */

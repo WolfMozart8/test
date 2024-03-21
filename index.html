@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="video-container">
+        <video id="myVideo" controls>
+            <source src="./video.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+    </div>
+
     <div id="text-list">
         <div class="text">Here</div>
         <div class="text">Here</div>
@@ -14,9 +21,16 @@
     </div>
 
     <div id="main-text">
-        <div id="time">
-            <input type="number" id="time-start">
-            <input type="number" id="time-end">
+        <div id="controls">
+            <div id="time">
+                <input type="number" id="time-start">
+                <input type="number" id="time-end">
+            </div>
+            <div id="buttons-media">
+                <button class="btn-media">R</button>
+                <button class="btn-media">P</button>
+                <button class="btn-media">></button>
+            </div>
         </div>
 
         <textarea name="textarea" id="textarea" cols="30" rows="3"></textarea>

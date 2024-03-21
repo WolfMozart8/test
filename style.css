@@ -30,6 +30,7 @@ body {
     font-size: 1.8rem;
     border: 1px solid red;
     overflow: auto;
+    flex: 1;
 }
 #text-list div {
     border-bottom: 1px solid gray;
@@ -37,10 +38,24 @@ body {
     margin-bottom: 20px;
 }
 
+#controls {
+    display: flex;
+    margin-bottom: 10px;
+}
+
 #time {
     width: 100%;
     display: flex;
 }
 #time input {
-    width: 40px;
+    width: 60px;
+}
+
+/* VIDEO */
+#buttons-media {
+    display: flex;
+    gap: 10px;
+}
+.btn-media {
+    width: 30px;
 }
