@@ -34,14 +34,26 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   let list = [];
   if (sessionStorage.getItem("list")) {
-    list = JSON.parse(sessionStorage.getItem("list"));
+    list = Array.from(JSON.parse(sessionStorage.getItem("list")));
   }
+
+
+  // Retrive storage list to Dom
+  function listToDom() {
+    for (let i = 0; i < list.length; i++) {
+      const element = list[i]
+
+      domAddText(element)
+    }
+  }
+  listToDom()
 
   /**
    * Add new text
    */
   btnAdd.addEventListener("click", () => {
     addText(textarea.value, timeStart.value, timeEnd.value);
+    console.log(textarea.value, timeStart.value, timeEnd.value);
   });
 
   function addText(text, start, end) {
@@ -64,6 +76,16 @@ document.addEventListener("DOMContentLoaded", (e) => {
     const domTextDIv = document.createElement("div");
     domTextDIv.classList.add("text");
     domTextDIv.textContent = textObject.text;
+
+    // Add time as data
+    domTextDIv.setAttribute("data-start", textObject.start)
+    domTextDIv.setAttribute("data-end", textObject.end)
+
+    // add click to retrieve time data
+    domTextDIv.addEventListener("click", () => {
+      timeStart.value = textObject.start
+      timeEnd.value = textObject.end
+    })
 
     textList.appendChild(domTextDIv);
   }
