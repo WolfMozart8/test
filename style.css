@@ -54,6 +54,7 @@ body {
 /* VIDEO */
 #myVideo {
     /* display: none; */
+    width: 100%;
 }
 
 #buttons-media {

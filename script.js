@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", (e) => {
+
 const textList = document.getElementById("text-list")
 
 const textarea = document.querySelector("#textarea")
@@ -6,30 +8,24 @@ const timeEnd = document.querySelector("#time-end")
 
 const btnAdd = document.querySelector("#btn-add")
 
-// VIDEO
-// let video = document.getElementById("myVideo");
-const videoInput = document.getElementById("videoInput")
-videoInput.addEventListener("change", (e) => {
-    // const src = document.querySelector("#videoSrc")
-    // src.src = videoInput.value
-    // video.style.display = "block"
-    const v = document.createElement("video")
-    v.id = "myVideo"
-    const s = document.createElement("source")
-    s.src = videoInput.a
-    console.log(e);
-    v.appendChild(s)
-
-    document.querySelector(".video-container").appendChild(v)
+    // VIDEO
+    let video = document.getElementById("myVideo");
+    const videoInput = document.getElementById("videoInput")
 
 
+    videoInput.addEventListener("change", (e) => {
+        const file = e.target.files[0]
+        const url = URL.createObjectURL(file)
 
-    // src.src = "../../../Videos/2023-08-11 22-27-57.mp4"
-})
+        console.log(file);
+        console.log(url);
+
+        video.src = url
+    })
 
 
-let list = []
-if (sessionStorage.getItem("list")) {
+    let list = []
+    if (sessionStorage.getItem("list")) {
     list = JSON.parse(sessionStorage.getItem("list"))
 }
 
@@ -38,11 +34,11 @@ btnAdd.addEventListener("click", () => {
         textarea.value,
         timeStart.value,
         timeEnd.value
-    )
-})
+        )
+    })
 
-function addText (text, start, end) {
-    // if (end < start) {throw Error("invalid values")}
+    function addText (text, start, end) {
+        // if (end < start) {throw Error("invalid values")}
 
     const newText = {
         text, start, end
@@ -66,3 +62,4 @@ function domAddText(textObject) {
 /**
  * VIDEO
  */
+})
