@@ -110,16 +110,21 @@ document.addEventListener("DOMContentLoaded", (e) => {
     video.classList.toggle("show")
   })
 
-  btnPress.addEventListener("mousedown", () => {
+  btnPress.addEventListener("mousedown", pressOnButton)
+  btnPress.addEventListener("mouseup", pressOutButton)
+  btnPress.addEventListener("touchstart", pressOnButton)
+  btnPress.addEventListener("touchend", pressOutButton)
+
+  function pressOnButton () {
     startTime = currentTime
-  })
-  btnPress.addEventListener("mouseup", () => {
+  }
+  function pressOutButton () {
     endTime = currentTime
     // add to numbr inputs
     timeStart.value = startTime
     timeEnd.value = endTime
     console.log(startTime, endTime);
-  })
+  }
 
   // player
   btnPlay.addEventListener("click", () => {
