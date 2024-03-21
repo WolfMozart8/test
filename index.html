@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <input type="file" accept="video/*" id="videoInput">
     <div class="video-container">
-        <video id="myVideo" controls>
-            <source src="./video.mp4" type="video/mp4">
+        <!-- <video id="myVideo" controls>
+            <source type="video/mp4" id="videoSrc">
             Tu navegador no soporta la etiqueta de video.
-        </video>
+        </video> -->
     </div>
 
     <div id="text-list">
@@ -27,6 +28,8 @@
                 <input type="number" id="time-end">
             </div>
             <div id="buttons-media">
+                <button class="btn-media">-5</button>
+                <button class="btn-media">-2</button>
                 <button class="btn-media">R</button>
                 <button class="btn-media">P</button>
                 <button class="btn-media">></button>

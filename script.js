@@ -7,9 +7,28 @@ const timeEnd = document.querySelector("#time-end")
 const btnAdd = document.querySelector("#btn-add")
 
 // VIDEO
-let video = document.getElementById("myVideo");
+// let video = document.getElementById("myVideo");
+const videoInput = document.getElementById("videoInput")
+videoInput.addEventListener("change", (e) => {
+    // const src = document.querySelector("#videoSrc")
+    // src.src = videoInput.value
+    // video.style.display = "block"
+    const v = document.createElement("video")
+    v.id = "myVideo"
+    const s = document.createElement("source")
+    s.src = videoInput.a
+    console.log(e);
+    v.appendChild(s)
 
-const list = []
+    document.querySelector(".video-container").appendChild(v)
+
+
+
+    // src.src = "../../../Videos/2023-08-11 22-27-57.mp4"
+})
+
+
+let list = []
 if (sessionStorage.getItem("list")) {
     list = JSON.parse(sessionStorage.getItem("list"))
 }
