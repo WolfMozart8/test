@@ -73,9 +73,20 @@ document.addEventListener("DOMContentLoaded", (e) => {
   }
 
   function domAddText(textObject) {
+    //* DOM
     const domTextDIv = document.createElement("div");
-    domTextDIv.classList.add("text");
-    domTextDIv.textContent = textObject.text;
+    domTextDIv.classList.add("text-container");
+
+    const text = document.createElement("p")
+    text.classList.add("text")
+    text.textContent = textObject.text;
+    domTextDIv.appendChild(text)
+
+    //TODO: delete text from list
+    const deleteBtn = document.createElement("button")
+    deleteBtn.classList.add("btn-delete-text")
+    deleteBtn.textContent = "X"
+    domTextDIv.appendChild(deleteBtn)
 
     // Add time as data
     domTextDIv.setAttribute("data-start", textObject.start)
