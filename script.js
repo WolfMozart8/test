@@ -21,7 +21,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
   // VIDEO TIME
   let currentTime = 0
   let startTime = 0
-  let endTime
+  let endTime = 0
+  let isRepeat = false
 
   videoInput.addEventListener("change", (e) => {
     const file = e.target.files[0];
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
     video.src = fileUrl;
   });
-  video.addEventListener("loadeddata", (e) => console.log(e));
+  // video.addEventListener("loadeddata", (e) => console.log(e));
 
   let list = [];
   if (sessionStorage.getItem("list")) {
@@ -72,7 +73,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
    */
   video.addEventListener("timeupdate", () => {
     currentTime = video.currentTime
-    console.log(currentTime);
+
+    if (isRepeat) {
+      if (video.currentTime >= endTime) {
+        video.pause()
+        isRepeat = false
+      }
+    }
+    // console.log(currentTime);
   })
 
   // buttons
@@ -85,6 +93,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
   })
   btnPress.addEventListener("mouseup", () => {
     endTime = currentTime
+    // add to numbr inputs
+    timeStart.value = startTime
+    timeEnd.value = endTime
     console.log(startTime, endTime);
   })
 
@@ -122,6 +133,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
       video.play()
     }
 
+  })
+
+  btnRepeat.addEventListener("click", () => {
+    isRepeat = true
+    video.currentTime = startTime
+    video.play()
   })
 
 });
