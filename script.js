@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   let list = [];
   if (sessionStorage.getItem("list")) {
-    list = Array.from(JSON.parse(sessionStorage.getItem("list")));
+    list = JSON.parse(sessionStorage.getItem("list"));
   }
 
 
@@ -162,9 +162,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   })
 
-  btnRepeat.addEventListener("click", () => {
+  btnRepeat.addEventListener("click", (e) => {
     isRepeat = true
-    video.currentTime = startTime
+    video.currentTime = timeStart.value
+    endTime = timeEnd.value
     video.play()
   })
 

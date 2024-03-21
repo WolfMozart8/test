@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    user-select: none;
 }
 
 body {
@@ -74,6 +73,7 @@ body {
     min-width: 30px;
     padding: 5px;
     border-radius: 5px;
+    user-select: none;
 }
 
 #load-video {
