@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input type="file" accept="video/*" id="videoInput">
+    <div id="load-video">
+        <input type="file" accept="video/*" id="videoInput">
+        <button class="btn-media">show/hide</button>
+    </div>
     <div class="video-container">
         <video id="myVideo" controls>
             <!-- <source type="video/mp4" id="videoSrc"> -->
@@ -33,6 +36,9 @@
                 <button class="btn-media">R</button>
                 <button class="btn-media">P</button>
                 <button class="btn-media">></button>
+            </div>
+            <div id="create-text">
+                <button class="btn-media">press</button>
             </div>
         </div>
 

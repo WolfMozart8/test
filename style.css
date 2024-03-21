@@ -41,20 +41,28 @@ body {
 #controls {
     display: flex;
     margin-bottom: 10px;
+    justify-content: space-between;
 }
 
 #time {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
 }
 #time input {
     width: 60px;
 }
 
+#create-text button{
+    background-color: #ff5555;
+}
+
 /* VIDEO */
 #myVideo {
-    /* display: none; */
+    display: none;
     width: 100%;
+}
+#myVideo.show {
+    display: block;
 }
 
 #buttons-media {
@@ -62,5 +70,12 @@ body {
     gap: 10px;
 }
 .btn-media {
-    width: 30px;
+    min-width: 30px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#load-video {
+    display: flex;
+    justify-content: space-between;
 }
