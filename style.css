@@ -79,3 +79,21 @@ body {
     display: flex;
     justify-content: space-between;
 }
+
+
+
+@media (max-width: 400px) {
+    #controls {
+        flex-direction: column;
+    }
+    #time {
+        order: 1;
+    }
+    #buttons-media {
+        justify-content: center;
+    }
+    #create-text {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
