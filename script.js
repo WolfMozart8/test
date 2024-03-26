@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     let isInMain = false
 
     if (mainList.length <= 0) {
-      const getMainList = JSON.parse(sessionStorage.getItem("mainList"))
+      const getMainList = JSON.parse(localStorage.getItem("mainList"))
       if (getMainList !== null) {
         mainList.push(...getMainList)
       }
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       createList(fileName)
       // activeList = mainList[mainList.length - 1]
       activeListIndex = mainList.length - 1
-      sessionStorage.setItem("mainList", JSON.stringify(mainList))
+      localStorage.setItem("mainList", JSON.stringify(mainList))
     } else {
 
       for (let i = 0; i < mainList.length; i++) {
@@ -80,8 +80,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 
 
-  // if (sessionStorage.getItem("list")) {
-  //   mainList[activeListIndex] = JSON.parse(sessionStorage.getItem("list"));
+  // if (localStorage.getItem("list")) {
+  //   mainList[activeListIndex] = JSON.parse(localStorage.getItem("list"));
   // }
 
 
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     domAddText(newText);
 
     textarea.value = "";
-    sessionStorage.setItem("mainList", JSON.stringify(mainList));
+    localStorage.setItem("mainList", JSON.stringify(mainList));
   }
 
   function domAddText(textObject) {
