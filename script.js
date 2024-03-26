@@ -110,8 +110,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
    * Add new text
    */
   btnAdd.addEventListener("click", () => {
-    addText(textarea.value, timeStart.value, timeEnd.value);
-    // console.log(textarea.value, timeStart.value, timeEnd.value);
+    if (textarea.value !== "") {
+      addText(textarea.value, timeStart.value, timeEnd.value);
+      // console.log(textarea.value, timeStart.value, timeEnd.value);
+    }
   });
 
   function addText(text, start, end) {
