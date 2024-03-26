@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", (e) => {
+  const mainList = []
+  // Active list will be select like this: maintList[activeListIndex].list
+  let activeListIndex = 0;
+
+
+  // DOM
   const textList = document.getElementById("text-list");
 
   const textarea = document.querySelector("#textarea");
@@ -18,6 +24,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
   const btnRepeat = document.getElementById("btn-repeat");
   const btnPrev2 = document.getElementById("btn-prev2");
   const btnPrev5 = document.getElementById("btn-prev5");
+
+
   // VIDEO TIME
   let currentTime = 0
   let startTime = 0
@@ -26,34 +34,84 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   videoInput.addEventListener("change", (e) => {
     const file = e.target.files[0];
+    const fileName = file.name;
     const fileUrl = URL.createObjectURL(file);
+    let isInMain = false
+
+    if (mainList.length <= 0) {
+      const getMainList = JSON.parse(sessionStorage.getItem("mainList"))
+      if (getMainList !== null) {
+        mainList.push(...getMainList)
+      }
+
+    }
+
+    for (let i = 0; i < mainList.length; i++) {
+      const element = mainList[i];
+      if (element.name === fileName) {
+        isInMain = true
+        break
+      }
+    }
+
+    if (!isInMain) {
+      console.log("not in main");
+      createList(fileName)
+      // activeList = mainList[mainList.length - 1]
+      activeListIndex = mainList.length - 1
+      sessionStorage.setItem("mainList", JSON.stringify(mainList))
+    } else {
+
+      for (let i = 0; i < mainList.length; i++) {
+        const element = mainList[i];
+        if (element.name === fileName) {
+          activeListIndex = i
+          break
+        }
+      }
+    }
+
+    listToDom()
+
 
     video.src = fileUrl;
   });
   // video.addEventListener("loadeddata", (e) => console.log(e));
 
-  let list = [];
-  if (sessionStorage.getItem("list")) {
-    list = JSON.parse(sessionStorage.getItem("list"));
-  }
+
+
+  // if (sessionStorage.getItem("list")) {
+  //   mainList[activeListIndex] = JSON.parse(sessionStorage.getItem("list"));
+  // }
 
 
   // Retrive storage list to Dom
   function listToDom() {
-    for (let i = 0; i < list.length; i++) {
-      const element = list[i]
+    //! DELETE PREV DOM LIST
+    // console.log("1: om func");
+    if (textList.firstChild) {
+      // console.log("2: firstchild");
+      while (textList.firstChild) {
+        // console.log("3: firstchild remove " + textList.firstChild);
+        textList.removeChild(textList.firstChild)
+      }
+    }
+
+    // console.log("4: " + mainList[activeListIndex].list.length);
+    for (let i = 0; i < mainList[activeListIndex].list.length; i++) {
+      const element = mainList[activeListIndex].list[i]
 
       domAddText(element)
     }
   }
-  listToDom()
+  // listToDom()
 
   /**
    * Add new text
    */
   btnAdd.addEventListener("click", () => {
     addText(textarea.value, timeStart.value, timeEnd.value);
-    console.log(textarea.value, timeStart.value, timeEnd.value);
+    // console.log(textarea.value, timeStart.value, timeEnd.value);
   });
 
   function addText(text, start, end) {
@@ -65,11 +123,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
       end,
     };
 
-    list.push(newText);
+    mainList[activeListIndex].list.push(newText);
+    console.log(mainList);
     domAddText(newText);
 
     textarea.value = "";
-    sessionStorage.setItem("list", JSON.stringify(list));
+    sessionStorage.setItem("mainList", JSON.stringify(mainList));
   }
 
   function domAddText(textObject) {
@@ -99,6 +158,15 @@ document.addEventListener("DOMContentLoaded", (e) => {
     })
 
     textList.appendChild(domTextDIv);
+  }
+
+
+  function createList(name) {
+    const addNewMedia = {
+      name: name,
+      list: []
+    };
+    mainList.push(addNewMedia)
   }
 
   /**
